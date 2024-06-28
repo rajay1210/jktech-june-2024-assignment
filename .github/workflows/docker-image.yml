@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag test-service:1.0 --target test-service
     - name: Docker login
-      run: echo ${{ secrets.AWS_IMAGE_REPO_SECRET }} | docker login --username AWS --password-stdin 767397963572.dkr.ecr.ap-southeast-2.amazonaws.com
+      run: aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 767397963572.dkr.ecr.ap-southeast-2.amazonaws.com
     - name: Tag Docker image
       run: docker tag test-service:1.0 767397963572.dkr.ecr.ap-southeast-2.amazonaws.com/sample-jk-tech-assignment:latest
     - name: Push Docker image
