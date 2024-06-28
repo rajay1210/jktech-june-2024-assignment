@@ -19,5 +19,7 @@ RUN python -m pip install --upgrade pip \
     && python -m pip install --upgrade wheel \
     && python -m pip install -r requirements.txt
 
+EXPOSE 7000
+
 FROM app-base AS test-service
 CMD ["python", "app.py"]
