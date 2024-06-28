@@ -20,4 +20,4 @@ RUN python -m pip install --upgrade pip \
     && python -m pip install -r requirements.txt
 
 FROM app-base AS test-service
-CMD ["gunicorn", "-c", "config.py", "app:app"]
+CMD ["python", "app.py"]
