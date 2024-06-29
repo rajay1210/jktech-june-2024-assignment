@@ -22,4 +22,4 @@ RUN python -m pip install --upgrade pip \
 EXPOSE 7000
 
 FROM app-base AS test-service
-CMD ["gunicorn", "-c", "config.py", "app:app"]
+CMD ["python", "app.py"]
