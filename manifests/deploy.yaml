@@ -31,3 +31,32 @@ spec:
   - protocol: "TCP"
     port: 7000
     targetPort: 7000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-service
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/group.name: test-service
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+    alb.ingress.kubernetes.io/subnets: subnet-0b7f5b8c5b6c9f0e7, subnet-0f2eb9c2850b3cb44, subnet-0e7c88621b4dad4be
+    alb.ingress.kubernetes.io/security-groups: sg-0388f1fb57ca15a52
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/healthcheck-path: /docs
+    alb.ingress.kubernetes.io/healthcheck-port: '7000'
+
+spec:
+  ingressClassName: alb
+  rules:
+  - http:
+      paths:
+      - path: /test-service
+        pathType: Prefix
+        backend:
+          service:
+            name: test-service
+            port:
+              number: 7000
