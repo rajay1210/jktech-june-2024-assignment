@@ -1,0 +1,2 @@
+export OPENAI_API_KEY="c7f44a5c6f4444f6a040f7f9c139f2d8"
+repoagent run --model gpt-3.5-turbo --base-url https://openai-genix-dev-01.openai.azure.com/ --target-repo-path . --ignore-list .venv/,poetry.lock --language English --log-level DEBUG
