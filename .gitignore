@@ -3,3 +3,4 @@ venv/
 kubectl.exe
 helm/
 run-repoagent.sh
+run-repoagent-azure.sh
