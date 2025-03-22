@@ -2,3 +2,4 @@ venv/
 .vscode/
 kubectl.exe
 helm/
+run-repoagent.sh
